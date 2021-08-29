@@ -1,14 +1,14 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
 
-import Square from './cell.js';
+import TicTacToeSquare from './tic-tac-toe-square.js';
 
 // import './grid.css';
 
-export default class Board extends React.Component {
+export default class TicTacToeBoard extends React.Component {
     renderSquare(i) {
         return (
-        <Square 
+        <TicTacToeSquare 
             value={this.props.squares[i]} 
             onClick={() => this.props.onClick(i)}
         /> );

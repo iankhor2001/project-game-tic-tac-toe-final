@@ -1,11 +1,16 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
 
-import Board from './grid.js';
+import TicTacToeBoard from './tic-tac-toe-board.js';
+import TicTacToeBanner from './tic-tac-toe-banner.js';
 
-// import './game.css';
 
-export default class Game extends React.Component {
+
+import './tic-tac-toe.css';
+
+export default class TicTacToe extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,6 +19,8 @@ export default class Game extends React.Component {
             }],
             xIsNext: true,
             stepNumber: 0,
+            OWin: 0,
+            XWin: 0,
         };
     }
 
@@ -21,6 +28,8 @@ export default class Game extends React.Component {
         const history = this.state.history;
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
+
+        const playerWins = [this.state.OWin, this.state.XWin];
 
         const moves = history.map((step, move) => {
             const desc = move ?
@@ -41,19 +50,23 @@ export default class Game extends React.Component {
         }
 
         return (
-            <div className = "game" >
-                <div className = "game-board" >
-                <Board
-                    squares = {current.squares}
-                    onClick={(i) => this.handleClick(i)}
-                />
-            </div> 
-            <div className = "game-info" >
-            <div> {status} </div> 
-            <ol> {moves} </ol>
-            </div> 
-            
-        </div>
+            <div className = "tic-tac-toe" >
+                <TicTacToeBanner wins={playerWins} status={status}/>
+                <Container>
+                    <Row>
+                        <Col sm={8} className = "game-board">
+                            <TicTacToeBoard
+                                squares = {current.squares}
+                                onClick={(i) => this.handleClick(i)}
+                            />
+                        </Col> 
+                        <Col sm={4} className = "game-info">
+                            <div> {status} </div> 
+                            <ol> {moves} </ol>
+                        </Col> 
+                    </Row>
+                </Container>
+            </div>
         );
     }
 
