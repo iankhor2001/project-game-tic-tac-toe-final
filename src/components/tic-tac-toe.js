@@ -5,6 +5,7 @@ import Col from 'react-bootstrap/Col'
 
 import TicTacToeBoard from './tic-tac-toe-board.js';
 import TicTacToeBanner from './tic-tac-toe-banner.js';
+import { TicTacToeResetButton } from './tic-tac-toe-btn.js';
 
 import './tic-tac-toe.css';
 
@@ -76,8 +77,42 @@ export default class TicTacToe extends React.Component {
                         </Col> 
                     </Row>
                 </Container>
+                <div>
+                    <TicTacToeResetButton 
+                        winner={winner}
+                        onClick={() => {
+                            this.refreshBoard();
+                            this.setState({
+                                OWin: 0,
+                                XWin: 0,
+                            });
+                        }}
+                    />
+                </div>
             </div>
         );
+    }
+
+    updateWinner(winner) {
+        if (winner==='O') {
+            this.setState({
+                OWin: this.state.OWin + 1
+            });
+        } else if (winner==='X'){
+            this.setState({
+                XWin: this.state.XWin + 1
+            });
+        }
+    }
+
+    refreshBoard() {
+        this.setState({
+            history: [{
+                squares: Array(9).fill(null),
+            }],
+            xIsNext: true,
+            stepNumber: 0,
+        })
     }
 
     handleClick(i) {
