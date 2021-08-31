@@ -6,8 +6,6 @@ import Col from 'react-bootstrap/Col'
 import TicTacToeBoard from './tic-tac-toe-board.js';
 import TicTacToeBanner from './tic-tac-toe-banner.js';
 
-
-
 import './tic-tac-toe.css';
 
 export default class TicTacToe extends React.Component {
@@ -36,15 +34,25 @@ export default class TicTacToe extends React.Component {
                 'Go to move #' +  move :
                 'Go to game start';
             return (
-                <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                <li 
+                    key={move}
+                    className="mt-1"
+                >
+                    <button 
+                        className="btn-steps"
+                        onClick={() => this.jumpTo(move)
+                    }>
+                        {desc}
+                    </button>
                 </li>
             )
         })
 
+        // Update status
         let status;
         if (winner) {
             status = 'Winner: ' + winner;
+
         } else {
             status = 'Next player: '+ (this.state.xIsNext ? 'X' : 'O')
         }
@@ -53,16 +61,18 @@ export default class TicTacToe extends React.Component {
             <div className = "tic-tac-toe" >
                 <TicTacToeBanner wins={playerWins} status={status}/>
                 <Container>
-                    <Row>
-                        <Col sm={8} className = "game-board">
+                    <Row className="game-board justify-content-center py-4">
+                        <Col sm={6} className = "p-0">
                             <TicTacToeBoard
                                 squares = {current.squares}
                                 onClick={(i) => this.handleClick(i)}
                             />
                         </Col> 
-                        <Col sm={4} className = "game-info">
-                            <div> {status} </div> 
-                            <ol> {moves} </ol>
+                        <Col sm={5} className = "game-info p-0">
+                            <div className="text-center mb-2 fs-5 text-decoration-underline">
+                                Game History
+                            </div> 
+                            <ol className="ms-5"> {moves} </ol>
                         </Col> 
                     </Row>
                 </Container>

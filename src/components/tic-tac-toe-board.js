@@ -1,9 +1,5 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-
 import TicTacToeSquare from './tic-tac-toe-square.js';
-
-// import './grid.css';
 
 export default class TicTacToeBoard extends React.Component {
     renderSquare(i) {
@@ -17,7 +13,7 @@ export default class TicTacToeBoard extends React.Component {
 
     render() {
         return ( <div>
-            <div className = "board-row" > {
+            <div className = "board-row d-flex justify-content-center" > {
                 this.renderSquare(0)
             } {
                 this.renderSquare(1)
@@ -25,7 +21,7 @@ export default class TicTacToeBoard extends React.Component {
                 this.renderSquare(2)
             } 
             </div> 
-            <div className = "board-row" > {
+            <div className = "board-row d-flex justify-content-center" > {
                 this.renderSquare(3)
             } {
                 this.renderSquare(4)
@@ -33,7 +29,7 @@ export default class TicTacToeBoard extends React.Component {
                 this.renderSquare(5)
             } 
             </div> 
-            <div className = "board-row"> {
+            <div className = "board-row d-flex justify-content-center"> {
                 this.renderSquare(6)
             } {
                 this.renderSquare(7)
