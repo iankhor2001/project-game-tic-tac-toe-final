@@ -37,3 +37,11 @@
     box-sizing: border-box;
     text-align: center;
 }
+
+.tic-tac-toe-btn, .tic-tac-toe-btn.disabled, .tic-tac-toe-btn:active {
+    background-color: transparent;
+    font-weight: 700;
+    border-width: 2px;
+    border-color: #22223B;
+    color: #22223B;
+}

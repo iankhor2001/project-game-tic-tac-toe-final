@@ -20,3 +20,41 @@ body {
 .nav-item > a {
     padding-bottom: 0.3125rem;
 }
+
+.btn-outline-primary {
+    background-color: transparent;
+    border-color: #22223B;
+    color: #22223B;
+}
+
+.btn-outline-primary:active {
+    outline-color: #22223B;
+}
+
+.btn-outline-primary:hover {
+    background-color: #C9ADA7;
+    border-color: #C9ADA7;
+    color: #4A4E69;
+  }
+
+.btn:focus, .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(201, 173, 167, 0.25);
+}
+
+.btn-outline-primary:focus, .btn-outline-primary.focus {
+    box-shadow: 0 0 0 0.2rem rgba(201, 173, 167, 0.5);
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem rgba(74, 78, 105, 0.5);
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: transparent;
+    border-color: #C9ADA7;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(201, 173, 167, 0.25);
+  }

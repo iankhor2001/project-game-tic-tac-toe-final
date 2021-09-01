@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col'
 
 import TicTacToeBoard from './tic-tac-toe-board.js';
 import TicTacToeBanner from './tic-tac-toe-banner.js';
-import { TicTacToeResetButton } from './tic-tac-toe-btn.js';
+import { TicTacToeNextGameButton, TicTacToeResetButton } from './tic-tac-toe-btn.js';
 
 import './tic-tac-toe.css';
 
@@ -77,8 +77,9 @@ export default class TicTacToe extends React.Component {
                         </Col> 
                     </Row>
                 </Container>
-                <div>
+                <div className="d-flex justify-content-center py-2">
                     <TicTacToeResetButton 
+                        
                         winner={winner}
                         onClick={() => {
                             this.refreshBoard();
@@ -86,6 +87,13 @@ export default class TicTacToe extends React.Component {
                                 OWin: 0,
                                 XWin: 0,
                             });
+                        }}
+                    />
+                    <TicTacToeNextGameButton
+                        winner={winner}
+                        onClick={() => {
+                            this.updateWinner(winner);
+                            this.refreshBoard();
                         }}
                     />
                 </div>

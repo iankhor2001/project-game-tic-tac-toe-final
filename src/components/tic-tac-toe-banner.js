@@ -12,7 +12,7 @@ class TicTacToeScore extends React.Component {
                     className="score-icon ms-auto"
                 />
                 &nbsp;&nbsp;
-                <span className="role me-auto">{ this.props.wins ? this.props.wins : "-" }</span>
+                <span className="me-auto align-item-center">{ this.props.wins ? this.props.wins : "-" }</span>
             </div>
         )
     }
@@ -26,7 +26,7 @@ export default class TicTacToeBanner extends React.Component {
                     <TicTacToeScore className="me-auto" player={false} wins={this.props.wins[0]} />
                     <TicTacToeScore className="ms-auto" player={true}  wins={this.props.wins[1]} />
                 </div>       
-                <div className="turnCon">
+                <div className="turnCon mt-3 fs-3 text-center">
                     {this.props.status}
                 </div>         
             </div>
