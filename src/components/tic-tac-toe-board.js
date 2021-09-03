@@ -5,6 +5,7 @@ export default class TicTacToeBoard extends React.Component {
     renderSquare(i) {
         return (
         <TicTacToeSquare 
+        key={'TicTacToeSquare '+ i}
             active = {this.props.activeSquare===i}
             value={this.props.squares[i]} 
             onClick={() => this.props.onClick(i)}
@@ -13,32 +14,15 @@ export default class TicTacToeBoard extends React.Component {
     }
 
     render() {
-        return ( <div>
-            <div className = "board-row d-flex justify-content-center" > {
-                this.renderSquare(0)
-            } {
-                this.renderSquare(1)
-            } {
-                this.renderSquare(2)
-            } 
-            </div> 
-            <div className = "board-row d-flex justify-content-center" > {
-                this.renderSquare(3)
-            } {
-                this.renderSquare(4)
-            } {
-                this.renderSquare(5)
-            } 
-            </div> 
-            <div className = "board-row d-flex justify-content-center"> {
-                this.renderSquare(6)
-            } {
-                this.renderSquare(7)
-            } {
-                this.renderSquare(8)
-            } 
-            </div> 
-        </div>
-        );
+        let board = [];
+        for (var rowIndex = 0; rowIndex < 3; rowIndex++) {
+            let rowBoard = [];
+            for (var columnIndex = 0; columnIndex < 3; columnIndex++) {
+                let currentIndex = rowIndex*3 + columnIndex;
+                rowBoard.push(this.renderSquare(currentIndex));
+            }
+            board.push(rowBoard);
+        }
+        return <div>{board}</div>;
     }
 }
