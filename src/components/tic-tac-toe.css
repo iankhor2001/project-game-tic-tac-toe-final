@@ -44,3 +44,9 @@
     border-color: #22223B;
     color: #22223B;
 }
+
+.active-square {
+    -webkit-box-shadow: inset 0 0 20px #22223B, 0 0 10px rgba(34,34,59,0.69);
+    -moz-box-shadow: inset 0 0 20px #22223B, 0 0 10px rgba(34,34,59,0.69);
+    box-shadow: inset 0 0 20px #22223B, 0 0 10px rgba(34,34,59,0.69);
+}

@@ -21,6 +21,7 @@ export default class TicTacToe extends React.Component {
             stepNumber: 0,
             OWin: 0,
             XWin: 0,
+            activeSquare: null,
         };
     }
 
@@ -66,9 +67,10 @@ export default class TicTacToe extends React.Component {
                 <TicTacToeBanner wins={playerWins} status={status}/>
                 <Container>
                     <Row className="game-board justify-content-center py-4">
-                        <Col sm={6} className = "p-0">
-                            <TicTacToeBoard
+                        <Col sm={6} className = "p-0 my-auto">
+                            <TicTacToeBoard 
                                 squares = {current.squares}
+                                activeSquare = {this.state.activeSquare}
                                 onClick={(i) => this.handleClick(i)}
                             />
                         </Col> 
@@ -123,6 +125,7 @@ export default class TicTacToe extends React.Component {
             }],
             xIsNext: true,
             stepNumber: 0,
+            activeSquare: null,
         })
     }
 
@@ -139,6 +142,7 @@ export default class TicTacToe extends React.Component {
                 squares: squares,
                 move: i,
             }]),
+            activeSquare: i,
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext
         });

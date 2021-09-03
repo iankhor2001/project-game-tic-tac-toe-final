@@ -5,6 +5,7 @@ export default class TicTacToeBoard extends React.Component {
     renderSquare(i) {
         return (
         <TicTacToeSquare 
+            active = {this.props.activeSquare===i}
             value={this.props.squares[i]} 
             onClick={() => this.props.onClick(i)}
         /> );
