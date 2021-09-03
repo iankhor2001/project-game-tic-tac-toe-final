@@ -12,6 +12,7 @@ import Container from 'react-bootstrap/Container'
 import TicTacToe from "./tic-tac-toe.js";
 
 import './main.css';
+import './btn.css';
 
 export default class Main extends React.Component {
     constructor(props) {

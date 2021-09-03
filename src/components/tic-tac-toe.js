@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col'
+import Col from 'react-bootstrap/Col';
 
 import TicTacToeBoard from './tic-tac-toe-board.js';
 import TicTacToeBanner from './tic-tac-toe-banner.js';
@@ -15,6 +15,7 @@ export default class TicTacToe extends React.Component {
         this.state = {
             history: [{
                 squares: Array(9).fill(null),
+                move: Array(9).fill(null),
             }],
             xIsNext: true,
             stepNumber: 0,
@@ -31,8 +32,10 @@ export default class TicTacToe extends React.Component {
         const playerWins = [this.state.OWin, this.state.XWin];
 
         const moves = history.map((step, move) => {
+            const rowNow = Math.floor(history[move].move / 3) + 1 ;
+            const colNow = history[move].move % 3 + 1 ;
             const desc = move ?
-                'Go to move #' +  move :
+                'Go to move #' +  move + ' [r' + rowNow + ',c' + colNow + ']':
                 'Go to game start';
             return (
                 <li 
@@ -134,6 +137,7 @@ export default class TicTacToe extends React.Component {
         this.setState({
             history: history.concat([{
                 squares: squares,
+                move: i,
             }]),
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext
