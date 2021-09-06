@@ -31,7 +31,8 @@ export default class TicTacToe extends React.Component {
         const historyLength = history.length;
         const current = history[this.state.stepNumber];
 
-        const winner = calculateWinner(current.squares);
+        const winnerData = calculateWinner(current.squares);
+        const winner = winnerData[0];
         const playerWins = [this.state.OWin, this.state.XWin];
         const showAscendingOrder = this.state.showAscendingOrder;
 
@@ -58,36 +59,47 @@ export default class TicTacToe extends React.Component {
         })
 
         // Update status
-        let status;
-        if (winner==='tie') status='Tie!'
-        else if (winner) {
+        let status='';
+        let activeSquare = [];
+        if (winner==='tie') { 
+            status='Tie!'
+            activeSquare = [null];
+        } else if (winner) {
             status = 'Winner: ' + winner;
-
+            activeSquare = winnerData[1];
         } else {
             status = 'Next player: '+ (this.state.xIsNext ? 'X' : 'O')
+            activeSquare = [this.state.activeSquare];
         }
 
         return (
             <div className = "tic-tac-toe" >
                 <TicTacToeBanner wins={playerWins} status={status}/>
+
                 <Container>
                     <Row className="game-board justify-content-center py-4">
+
                         <Col sm={6} className = "p-0 my-auto">
                             <TicTacToeBoard 
+                                key = 'TicTacToeBoard'
                                 squares = {current.squares}
-                                activeSquare = {this.state.activeSquare}
+                                activeSquare = {activeSquare}
                                 onClick={(i) => this.handleClick(i)}
                             />
                         </Col> 
+
                         <Col sm={5} className = "game-info p-0">
                             <div className="text-center mb-2 fs-5 text-decoration-underline">
                                 Game History
                             </div> 
                             <ol className="ms-5"> {moves} </ol>
                         </Col> 
+
                     </Row>
                 </Container>
+
                 <div className="d-flex justify-content-center py-2">
+
                     <TicTacToeButton 
                         key='TicTacToeSwitchOrderButton'
                         onClick={() => {
@@ -117,7 +129,7 @@ export default class TicTacToe extends React.Component {
                         }}
                         display='Next Game'
                     />
-
+                    
                 </div>
             </div>
         );
@@ -150,7 +162,7 @@ export default class TicTacToe extends React.Component {
         const history = this.state.history.slice(0, this.state.stepNumber+1);
         const current = history[history.length - 1];
         const squares = current.squares.slice();
-        if (calculateWinner(squares) || squares[i]) {
+        if (calculateWinner(squares)[0] || squares[i]) {
             return;
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
@@ -191,16 +203,16 @@ function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
         const [a,b,c] = lines[i];
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return [squares[a],lines[i]];
         }
     };
 
     let squareOccupied = 0;
     squares.map((square) => {
         if (square !== null) squareOccupied=squareOccupied+1;
-        return null;
+        return [null,null];
     });
 
     if (squareOccupied===9) return 'tie';
-    else return null;
+    else return [null,null];
 }
