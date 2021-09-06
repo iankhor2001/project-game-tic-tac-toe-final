@@ -76,7 +76,7 @@ export default class TicTacToe extends React.Component {
             <div className = "tic-tac-toe" >
                 <TicTacToeBanner wins={playerWins} status={status}/>
 
-                <Container>
+                <Container className="tic-tac-toe-container">
                     <Row className="game-board justify-content-center py-4">
 
                         <Col sm={6} className = "p-0 my-auto">
@@ -213,6 +213,6 @@ function calculateWinner(squares) {
         return [null,null];
     });
 
-    if (squareOccupied===9) return 'tie';
+    if (squareOccupied===9) return ['tie',null];
     else return [null,null];
 }

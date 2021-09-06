@@ -3,7 +3,6 @@ import TicTacToeSquare from './tic-tac-toe-square.js';
 
 export default class TicTacToeBoard extends React.Component {
     renderSquare(i) {
-        // console.log(this.props.activeSquare)
         let isActive = this.props.activeSquare.includes(i);
         return (
         <TicTacToeSquare 
