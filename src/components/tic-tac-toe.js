@@ -22,17 +22,21 @@ export default class TicTacToe extends React.Component {
             OWin: 0,
             XWin: 0,
             activeSquare: null,
+            showAscendingOrder: true,
         };
     }
 
     render() {
         const history = this.state.history;
+        const historyLength = history.length;
         const current = history[this.state.stepNumber];
+
         const winner = calculateWinner(current.squares);
-
         const playerWins = [this.state.OWin, this.state.XWin];
+        const showAscendingOrder = this.state.showAscendingOrder;
 
-        const moves = history.map((step, move) => {
+        const moves = history.map((step, moveNumber) => {
+            const move = showAscendingOrder ? moveNumber : historyLength-moveNumber-1;
             const rowNow = Math.floor(history[move].move / 3) + 1 ;
             const colNow = history[move].move % 3 + 1 ;
             const desc = move ?
@@ -83,6 +87,15 @@ export default class TicTacToe extends React.Component {
                     </Row>
                 </Container>
                 <div className="d-flex justify-content-center py-2">
+                    <TicTacToeButton 
+                        key='TicTacToeSwitchOrderButton'
+                        onClick={() => {
+                            this.setState({
+                                showAscendingOrder: !showAscendingOrder
+                            });
+                        }}
+                        display='Switch Order'
+                    />
                     <TicTacToeButton 
                         key='TicTacToeRestartButton'
                         onClick={() => {

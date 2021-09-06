@@ -9,13 +9,13 @@ export class TicTacToeButton extends React.Component {
                 className="tic-tac-toe-btn m-2"
                 onClick={() => this.props.onClick()}
             >
-                Restart Game
+                {this.props.display}
             </Button>
         )
     }
 }
 
-export class TicTacToeNextGameButton extends React.Component {
+export class TicTacToeDisableButton extends React.Component {
     render() {
         return(
             <Button 
@@ -23,8 +23,9 @@ export class TicTacToeNextGameButton extends React.Component {
                 className={this.props.winner?"tic-tac-toe-btn m-2":"tic-tac-toe-btn m-2 disabled"}
                 onClick={() => this.props.onClick()}
             >
-                Next Game
+                {this.props.display}
             </Button>
         )
     }
 }
+
