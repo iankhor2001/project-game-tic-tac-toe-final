@@ -15,9 +15,9 @@ export default class TicTacToeBoard extends React.Component {
 
     render() {
         let board = [];
-        for (var rowIndex = 0; rowIndex < 3; rowIndex++) {
+        for (let rowIndex = 0; rowIndex < 3; rowIndex++) {
             let rowBoard = [];
-            for (var columnIndex = 0; columnIndex < 3; columnIndex++) {
+            for (let columnIndex = 0; columnIndex < 3; columnIndex++) {
                 let currentIndex = rowIndex*3 + columnIndex;
                 rowBoard.push(this.renderSquare(currentIndex));
             }

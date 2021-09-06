@@ -59,7 +59,8 @@ export default class TicTacToe extends React.Component {
 
         // Update status
         let status;
-        if (winner) {
+        if (winner==='tie') status='Tie!'
+        else if (winner) {
             status = 'Winner: ' + winner;
 
         } else {
@@ -191,6 +192,14 @@ function calculateWinner(squares) {
         if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
             return squares[a];
         }
-    }
-    return null;
+    };
+
+    let squareOccupied = 0;
+    squares.map((square) => {
+        if (square !== null) squareOccupied=squareOccupied+1;
+        return null;
+    });
+
+    if (squareOccupied===9) return 'tie';
+    else return null;
 }
