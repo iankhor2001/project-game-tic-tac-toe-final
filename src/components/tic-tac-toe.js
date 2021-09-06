@@ -169,6 +169,7 @@ export default class TicTacToe extends React.Component {
         this.setState({
             stepNumber: step,
             xIsNext: (step % 2) === 0,
+            activeSquare: this.state.history[step].move,
         })
     }
 
